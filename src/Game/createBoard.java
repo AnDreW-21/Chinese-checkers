@@ -117,7 +117,7 @@ public class createBoard {
         setPlayer6();
     }
 
-    char[][] getBoard() {
+    public char[][] getBoard() {
         return gameBoard;
     }
 
