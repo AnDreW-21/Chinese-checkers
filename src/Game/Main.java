@@ -2,7 +2,7 @@ package Game;
 class Main {
     public static void main(String[] args) {
         Moves myMove = new Moves();
-        int [][] availableMove = new int [6][2];
+        int [][] availableMove ;
         int MyRow=3,MyColum=11;
         availableMove = myMove.AllAvailableMoves(MyRow,MyColum);
         for (int i=0;i<6;i++){

@@ -9,7 +9,7 @@ public class Moves {
     public Moves (){
         Board = new createBoard();
         board = Board.getBoard();
-        board[4][12]='1';
+        //board[4][12]='1';
 //        Board.displayWithoutDashAndNums();
     }
     public int[][] AllAvailableMoves(int MyRow,int MyColum){
