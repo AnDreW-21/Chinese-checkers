@@ -61,9 +61,64 @@ public class createBoard {
             x+=1;
         }
     }
+    void lastLeftCorner(){
+        int x=13,count=9;
+        for (int i =x ; i <row; i++) {
+            for (int j = 0; j <count; j++) {
+                gameBoard[i][j]=' ';
+            }
+            count+=1;
+        }
+    }
+    void lastRightCorner(){
+        int x=13,count=15;
+        for (int i = x; i <row; i++) {
+            for (int j = count; j <column; j++) {
+                gameBoard[i][j]=' ';
+            }
+            count-=1;
+        }
+    }
 
-
+    void createTheFistHalfOfBoard(){
+        int c=0;
+        int r=4;
+        int end=column-1;
+        char temp='O';
+        int start=0;
+        while (r<13){
+            for (int i = start; i <=end ; i++) {
+                if(i==start ||temp=='-'){
+                    gameBoard[r][i]='O';
+                    temp='O';
+                }
+                else{
+                    gameBoard[r][i]='-';
+                    temp='-';
+                }
+            }
+            r++;
+            end--;
+            start++;
+        }
+    }
+    void drawBoard(){
+        initializeCornerOne();
+        initializeCornerTwo();
+        initializeMidCorner();
+        lastLeftCorner();
+        lastRightCorner();
+        createTheFistHalfOfBoard();
+    }
     char [][]getBoard(){
         return gameBoard;
+    }
+    void displayBoard(){
+        for (int i = 0; i <row ; i++) {
+            for (int j = 0; j <column ; j++) {
+                System.out.print(gameBoard[i][j]+" ");
+            }
+            System.out.println("");
+        }
     }
 }
