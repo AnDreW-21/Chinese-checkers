@@ -9,7 +9,6 @@ public class Players {
     private int[] location;
     private HashMap<Point, Character> human;
     private HashMap<Point, Character> computer;
-
     Players() {
         human = new HashMap<Point, Character>();
         computer = new HashMap<Point, Character>();
@@ -59,32 +58,8 @@ public class Players {
             human.put(new Point(xC, yC),'1');
             human.remove(new Point(xP, yP));
         }else {
-            computer.put(new Point(xC, yC),'1');
+            computer.put(new Point(xC, yC),'6');
             computer.remove(new Point(xP, yP));
         }
     }
-    public void checkWinner(){
-        boolean AiISWinner=false,humanIsWinner=false;
-        for (Map.Entry me : human.entrySet()) {
-            char x= (Character) me.getValue();
-            if(x=='6'){
-                AiISWinner=true;
-            }else {
-                AiISWinner=false;
-                break;
-            }
-        }
-        for (Map.Entry me : computer.entrySet()) {
-            char x= (Character) me.getValue();
-            if(x=='1'){
-                humanIsWinner=true;
-            }else {
-                humanIsWinner=false;
-                break;
-            }
-        }
-
-    }
-
-
 }

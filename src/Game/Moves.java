@@ -5,165 +5,211 @@ import java.util.ArrayList;
 
 public class Moves {
     private createBoard Board;
-    char[][]board;
-    public Moves (){
+    char[][] board;
+
+    public Moves() {
         Board = new createBoard();
         board = Board.getBoard();
 //        Board.displayWithoutDashAndNums();
     }
-    private ArrayList<Integer> hop(int x,int y, int C_Row, int C_Colum){
+
+    private ArrayList<Integer> hop(int x, int y, int C_Row, int C_Colum) {
         ArrayList<Integer> array = new ArrayList<Integer>();
         ArrayList<Integer> availableArray = new ArrayList<Integer>();
         ///left_hop move
-        if(board[x][y-2] !='O' &&board[x][y-4] =='O'){
-            if(x != C_Row || y-4 != C_Colum){
+        if (board[x][y - 2] != 'O' && board[x][y - 4] == 'O') {
+            if (x != C_Row || y - 4 != C_Colum) {
                 availableArray.add(x);
-                availableArray.add(y-4);
-                array = hop(x,y-4,x,y);
-                for(int i =0; i<array.size(); i++){
+                availableArray.add(y - 4);
+                array = hop(x, y - 4, x, y);
+                for (int i = 0; i < array.size(); i++) {
                     availableArray.add(array.get(i));
                 }
             }
         }
         ///right_hop move
-        if(board[x][y+2] !='O' && board[x][y+4] =='O'){
-            if(x != C_Row || y+4 != C_Colum){
+        if (board[x][y + 2] != 'O' && board[x][y + 4] == 'O') {
+            if (x != C_Row || y + 4 != C_Colum) {
                 availableArray.add(x);
-                availableArray.add(y+4);
-                array = hop(x,y+4,x,y);
-                for(int i =0; i<array.size(); i++){
+                availableArray.add(y + 4);
+                array = hop(x, y + 4, x, y);
+                for (int i = 0; i < array.size(); i++) {
                     availableArray.add(array.get(i));
                 }
             }
         }
         ///down_right_hop move
-        if(board[x+1][y+1] !='O' &&board[x+2][y+2] =='O'){
-            if(x+2 != C_Row || y+2 != C_Colum){
-                availableArray.add(x+2);
-                availableArray.add(y+2);
-                array = hop(x+2,y+2,x,y);
-                for(int i =0; i<array.size(); i++){
+        if (board[x + 1][y + 1] != 'O' && board[x + 2][y + 2] == 'O') {
+            if (x + 2 != C_Row || y + 2 != C_Colum) {
+                availableArray.add(x + 2);
+                availableArray.add(y + 2);
+                array = hop(x + 2, y + 2, x, y);
+                for (int i = 0; i < array.size(); i++) {
                     availableArray.add(array.get(i));
                 }
             }
         }
         ///down_left_hop move
-        if(board[x+1][y-1] !='O' && board[x+2][y-2] =='O'){
-            if(x+2 != C_Row || y-2 != C_Colum){
-                availableArray.add(x+2);
-                availableArray.add(y-2);
-                array = hop(x+2,y-2,x,y);
-                for(int i =0; i<array.size(); i++){
+        if (board[x + 1][y - 1] != 'O' && board[x + 2][y - 2] == 'O') {
+            if (x + 2 != C_Row || y - 2 != C_Colum) {
+                availableArray.add(x + 2);
+                availableArray.add(y - 2);
+                array = hop(x + 2, y - 2, x, y);
+                for (int i = 0; i < array.size(); i++) {
                     availableArray.add(array.get(i));
                 }
             }
         }
         ///up_right_hop move
-        if(board[x-1][y+1] !='O' && board[x-2][y+2] =='O'){
-            if(x-2 != C_Row || y+2 != C_Colum){
-                availableArray.add(x-2);
-                availableArray.add(y+2);
-                array = hop(x-2,y+2,x,y);
-                for(int i =0; i<array.size(); i++){
+        if (board[x - 1][y + 1] != 'O' && board[x - 2][y + 2] == 'O') {
+            if (x - 2 != C_Row || y + 2 != C_Colum) {
+                availableArray.add(x - 2);
+                availableArray.add(y + 2);
+                array = hop(x - 2, y + 2, x, y);
+                for (int i = 0; i < array.size(); i++) {
                     availableArray.add(array.get(i));
                 }
             }
         }
         ///up_left_hop move
-        if(board[x-1][y-1] !='O' && board[x-2][y-2] =='O'){
-            if(x-2 != C_Row || y-2 != C_Colum){
-                availableArray.add(x-2);
-                availableArray.add(y-2);
-                array = hop(x-2,y-2,x,y);
-                for(int i =0; i<array.size(); i++){
+        if (board[x - 1][y - 1] != 'O' && board[x - 2][y - 2] == 'O') {
+            if (x - 2 != C_Row || y - 2 != C_Colum) {
+                availableArray.add(x - 2);
+                availableArray.add(y - 2);
+                array = hop(x - 2, y - 2, x, y);
+                for (int i = 0; i < array.size(); i++) {
                     availableArray.add(array.get(i));
                 }
             }
         }
         return availableArray;
     }
-    public  ArrayList<Integer> AllAvailableMoves(int MyRow,int MyColum){
-        ArrayList<Integer>availableMoves = new ArrayList<Integer>();
+
+    public ArrayList<Integer> AllAvailableMoves(int MyRow, int MyColum) {
+        ArrayList<Integer> availableMoves = new ArrayList<Integer>();
         ArrayList<Integer> array = new ArrayList<Integer>();
         ///left move
-        if(board[MyRow][MyColum-2] =='O'){
+        if (board[MyRow][MyColum - 2] == 'O') {
             availableMoves.add(MyRow);
-            availableMoves.add(MyColum-2);
-        }else if(board[MyRow][MyColum-4] =='O'){
+            availableMoves.add(MyColum - 2);
+        } else if (board[MyRow][MyColum - 4] == 'O') {
             availableMoves.add(MyRow);
-            availableMoves.add(MyColum-4);
-            array = hop(MyRow,MyColum-4,MyRow,MyColum);
-            for(int i =0; i<array.size(); i++){
+            availableMoves.add(MyColum - 4);
+            array = hop(MyRow, MyColum - 4, MyRow, MyColum);
+            for (int i = 0; i < array.size(); i++) {
                 availableMoves.add(array.get(i));
             }
         }
         ///right move
-        if(board[MyRow][MyColum+2] =='O'){
+        if (board[MyRow][MyColum + 2] == 'O') {
             availableMoves.add(MyRow);
-            availableMoves.add(MyColum+2);
-        }else if(board[MyRow][MyColum+4] =='O'){
+            availableMoves.add(MyColum + 2);
+        } else if (board[MyRow][MyColum + 4] == 'O') {
             availableMoves.add(MyRow);
-            availableMoves.add(MyColum+4);
-            array = hop(MyRow,MyColum+4,MyRow,MyColum);
-            for(int i =0; i<array.size(); i++){
+            availableMoves.add(MyColum + 4);
+            array = hop(MyRow, MyColum + 4, MyRow, MyColum);
+            for (int i = 0; i < array.size(); i++) {
                 availableMoves.add(array.get(i));
             }
         }
         ///down right move
-        if(board[MyRow+1][MyColum+1] =='O'){
-            availableMoves.add(MyRow+1);
-            availableMoves.add(MyColum+1);
-        }else if(board[MyRow+2][MyColum+2] =='O'){
-            availableMoves.add(MyRow+2);
-            availableMoves.add(MyColum+2);
-            array = hop(MyRow+2,MyColum+2,MyRow,MyColum);
-            for(int i =0; i<array.size(); i++){
+        if (board[MyRow + 1][MyColum + 1] == 'O') {
+            availableMoves.add(MyRow + 1);
+            availableMoves.add(MyColum + 1);
+        } else if (board[MyRow + 2][MyColum + 2] == 'O') {
+            availableMoves.add(MyRow + 2);
+            availableMoves.add(MyColum + 2);
+            array = hop(MyRow + 2, MyColum + 2, MyRow, MyColum);
+            for (int i = 0; i < array.size(); i++) {
                 availableMoves.add(array.get(i));
             }
         }
         ///down left move
-        if(board[MyRow+1][MyColum-1] =='O'){
-            availableMoves.add(MyRow+1);
-            availableMoves.add(MyColum-1);
-        }else if(board[MyRow+2][MyColum-2] =='O'){
-            availableMoves.add(MyRow+2);
-            availableMoves.add(MyColum-2);
-            array = hop(MyRow+2,MyColum-2,MyRow,MyColum);
-            for(int i =0; i<array.size(); i++){
+        if (board[MyRow + 1][MyColum - 1] == 'O') {
+            availableMoves.add(MyRow + 1);
+            availableMoves.add(MyColum - 1);
+        } else if (board[MyRow + 2][MyColum - 2] == 'O') {
+            availableMoves.add(MyRow + 2);
+            availableMoves.add(MyColum - 2);
+            array = hop(MyRow + 2, MyColum - 2, MyRow, MyColum);
+            for (int i = 0; i < array.size(); i++) {
                 availableMoves.add(array.get(i));
             }
         }
         ///up right move
-        if(board[MyRow-1][MyColum+1] =='O'){
-            availableMoves.add(MyRow-1);
-            availableMoves.add(MyColum+1);
-        }else if(board[MyRow-2][MyColum+2] =='O'){
-            availableMoves.add(MyRow-2);
-            availableMoves.add(MyColum+2);
-            array = hop(MyRow-2,MyColum+2,MyRow,MyColum);
-            for(int i =0; i<array.size(); i++){
+        if (board[MyRow - 1][MyColum + 1] == 'O') {
+            availableMoves.add(MyRow - 1);
+            availableMoves.add(MyColum + 1);
+        } else if (board[MyRow - 2][MyColum + 2] == 'O') {
+            availableMoves.add(MyRow - 2);
+            availableMoves.add(MyColum + 2);
+            array = hop(MyRow - 2, MyColum + 2, MyRow, MyColum);
+            for (int i = 0; i < array.size(); i++) {
                 availableMoves.add(array.get(i));
             }
         }
         ///up left move
-        if(board[MyRow-1][MyColum-1] =='O'){
-            availableMoves.add(MyRow-1);
-            availableMoves.add(MyColum-1);
-        }else if(board[MyRow-2][MyColum-2] =='O'){
-            availableMoves.add(MyRow-2);
-            availableMoves.add(MyColum-2);
-            array = hop(MyRow-2,MyColum-2,MyRow,MyColum);
-            for(int i =0; i<array.size(); i++){
+        if (board[MyRow - 1][MyColum - 1] == 'O') {
+            availableMoves.add(MyRow - 1);
+            availableMoves.add(MyColum - 1);
+        } else if (board[MyRow - 2][MyColum - 2] == 'O') {
+            availableMoves.add(MyRow - 2);
+            availableMoves.add(MyColum - 2);
+            array = hop(MyRow - 2, MyColum - 2, MyRow, MyColum);
+            for (int i = 0; i < array.size(); i++) {
                 availableMoves.add(array.get(i));
             }
         }
         return availableMoves;
     }
-    public void printBoard(){
+
+    public void printBoard() {
         Board.displayWithoutDashAndNums();
     }
-    public void updateBoard(int MyRow,int MyColum,int MyNewRow,int MyNewColum){
+
+    public void updateBoard(int MyRow, int MyColum, int MyNewRow, int MyNewColum) {
         board[MyNewRow][MyNewColum] = board[MyRow][MyColum];
-        board[MyRow][MyColum] ='O';
+        board[MyRow][MyColum] = 'O';
+    }
+    public int checkWinner() {
+        boolean computer = false,human=false;
+        int start = 9, end = 16, r = 3;
+        char temp = '-';
+        for (int i = r; i >= 0; --i) {
+            for (int j = start; j < end; ++j) {
+                if (temp != '-') {
+                    if (board[i][j] == '6') {
+                        computer = true;
+                    }
+                } else {
+                    computer = false;
+                    return -1;
+                }
+            }
+            start++;
+            end--;
+        }
+        start = 9;
+        end = 16; r = 13;
+        for (int i = r; i <= 16; ++i) {
+            for (int j = start; j < end; ++j) {
+                if (j == start || temp != '-') {
+                    board[i][j] = '1';
+                    human=true;
+                } else {
+                    human=false;
+                    return -1;
+                }
+            }
+            start++;
+            end--;
+        }
+        if(human){
+            return 1;
+        }else if (computer){
+            return 2;
+        }
+        return 0;
     }
 }
+
