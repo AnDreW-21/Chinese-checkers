@@ -9,9 +9,6 @@ public class Moves {
     public Moves (){
         Board = new createBoard();
         board = Board.getBoard();
-        board[4][12]='1';
-        board[6][12]='1';
-        board[6][14]='1';
 //        Board.displayWithoutDashAndNums();
     }
     private ArrayList<Integer> hop(int x,int y, int C_Row, int C_Colum){

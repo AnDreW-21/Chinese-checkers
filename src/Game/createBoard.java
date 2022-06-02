@@ -154,7 +154,7 @@ public class createBoard {
         for (int i = r; i <= 7; ++i) {
             for (int j = start; j <= end; ++j) {
                 if (j == start || temp == '-') {
-                    gameBoard[i][j] = '2';
+                    gameBoard[i][j] = 'O';
                     temp = '2';
                 } else {
                     gameBoard[i][j] = '-';
@@ -172,7 +172,7 @@ public class createBoard {
         for (int i = r; i <= 7; ++i) {
             for (int j = start; j <= end; ++j) {
                 if (j == start || temp == '8') {
-                    gameBoard[i][j] = '3';
+                    gameBoard[i][j] = 'O';
                     temp = '3';
                 } else {
                     gameBoard[i][j] = '-';
@@ -190,7 +190,7 @@ public class createBoard {
         for (int i = r; i >= 9; --i) {
             for (int j = start; j <= end; ++j) {
                 if (j == start || temp == '8') {
-                    gameBoard[i][j] = '4';
+                    gameBoard[i][j] = 'O';
                     temp = '3';
                 } else {
                     gameBoard[i][j] = '-';
@@ -211,7 +211,7 @@ public class createBoard {
                     gameBoard[i][j] = '-';
                     temp = '3';
                 } else {
-                    gameBoard[i][j] = '5';
+                    gameBoard[i][j] = 'O';
                     temp = '8';
                 }
             }
