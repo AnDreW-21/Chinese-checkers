@@ -1,17 +1,19 @@
 package Game;
+
+import java.util.ArrayList;
+
 class Main {
     public static void main(String[] args) {
         Moves myMove = new Moves();
-        int [][] availableMove ;
+        ArrayList<Integer> availableMove = new ArrayList<Integer>() ;
         int MyRow=3,MyColum=11;
         availableMove = myMove.AllAvailableMoves(MyRow,MyColum);
-        for (int i=0;i<6;i++){
-            System.out.println("row "+availableMove[i][0]+" colum "+availableMove[i][1]);
+        for (int i=0;i<availableMove.size();i+=2){
+            System.out.println("row "+availableMove.get(i)+" colum "+availableMove.get(i+1));
         }
 
         myMove.printBoard();
-        boolean flag = myMove.Jumpcheck(MyRow,MyColum,5,13);
-        System.out.println(flag);
+        myMove.updateBoard(MyRow,MyColum,5,13);
         myMove.printBoard();
     }
 }
