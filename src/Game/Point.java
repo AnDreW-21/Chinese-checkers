@@ -3,6 +3,7 @@ package Game;
 public class Point {
     private int x;
     private int y;
+    private int distance;
 
     @Override
     public String toString() {
@@ -15,6 +16,15 @@ public class Point {
     public Point(int x, int y) {
         this.x = x;
         this.y = y;
+        distance =0;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
+    }
+
+    public int getDistance() {
+        return distance;
     }
 
     public int getX() {

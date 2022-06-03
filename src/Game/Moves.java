@@ -7,6 +7,18 @@ public class Moves {
     private createBoard Board;
     char[][] board;
 
+    public createBoard getBoard() {
+        return Board;
+    }
+
+    public void setBoard(createBoard board) {
+        Board = board;
+    }
+
+    public void setBoard(char[][] board) {
+        this.board = board;
+    }
+
     public Moves() {
         Board = new createBoard();
         board = Board.getBoard();

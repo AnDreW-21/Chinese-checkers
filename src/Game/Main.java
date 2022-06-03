@@ -1,12 +1,12 @@
 package Game;
 
 class Main {
+    static Moves myMove = new Moves();
     public static void main(String[] args) {
         createBoard board=new createBoard();
         board.displayBoard();
         Players players=new Players();
         players.displayHumanMoves();
-//        Moves myMove = new Moves();
 //        ArrayList<Integer> availableMove;
 //        int MyRow=3,MyColumn=11;
 //        availableMove = myMove.AllAvailableMoves(MyRow,MyColumn);
