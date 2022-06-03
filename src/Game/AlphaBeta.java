@@ -21,6 +21,7 @@ public class AlphaBeta {
             ArrayList<Integer> str = Main.myMove.AllAvailableMoves(p.getX(),p.getY(),board);
             for (int j = 0; j < str.size(); j+=2) {
                 updateBoard(board,p.getX(), p.getY(), str.get(j), str.get(j++));
+
                 minimax(board, depth - 1,computer, isMax,best);
                 board=Main.myMove.board;
             }
