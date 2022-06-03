@@ -85,7 +85,7 @@ public class Moves {
 
     public ArrayList<Integer> AllAvailableMoves(int MyRow, int MyColum,char[][] board) {
         ArrayList<Integer> availableMoves = new ArrayList<Integer>();
-        ArrayList<Integer> array = new ArrayList<Integer>();
+        ArrayList<Integer> array ;
         ///left move
         if (board[MyRow][MyColum - 2] == 'O') {
             availableMoves.add(MyRow);

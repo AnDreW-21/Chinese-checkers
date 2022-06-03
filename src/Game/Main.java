@@ -1,17 +1,21 @@
 package Game;
 
+import java.util.ArrayList;
+
 class Main {
     static Moves myMove = new Moves();
     static createBoard Board = new createBoard();
     static Players players=new Players();
+    static AlphaBeta Ai=new AlphaBeta();
     public static void updateBoard(char[][] board, int MyRow, int MyColum, int MyNewRow, int MyNewColum) {
         board[MyNewRow][MyNewColum] = board[MyRow][MyColum];
         board[MyRow][MyColum] = 'O';
     }
     public static void main(String[] args) {
-        createBoard board=new createBoard();
-        board.displayBoard();
+
         players.displayHumanMoves();
+        ArrayList<Integer> is=Ai.minimax(Board.getBoard(),3,players.getComputer(),players.getHuman(), true);
+
 
 //        ArrayList<Integer> availableMove;
 //        int MyRow=3,MyColumn=11;
