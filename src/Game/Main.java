@@ -12,9 +12,11 @@ class Main {
         board[MyRow][MyColum] = 'O';
     }
     public static void main(String[] args) {
-
+        Board.displayBoard();
         players.displayHumanMoves();
-        ArrayList<Integer> is=Ai.minimax(Board.getBoard(),3,players.getComputer(),players.getHuman(), true);
+        char [][]tempBoard=Board.getBoard();
+
+        ArrayList<Integer> is= AlphaBeta.minimax(tempBoard,3,players.getComputer(),players.getHuman(), true);
 
 
 //        ArrayList<Integer> availableMove;
