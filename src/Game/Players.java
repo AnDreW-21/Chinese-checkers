@@ -7,13 +7,21 @@ import java.util.Map;
 
 public class Players {
     private int[] location;
-    private HashMap<Point, Character> human;
-    private HashMap<Point, Character> computer;
+    private Map<Point, Character> human;
+    private Map<Point, Character> computer;
     Players() {
         human = new HashMap<Point, Character>();
         computer = new HashMap<Point, Character>();
         setHuman();
         setAiComputer();
+    }
+
+    public Map<Point, Character> getHuman() {
+        return human;
+    }
+
+    public Map<Point, Character> getComputer() {
+        return computer;
     }
 
     private void setHuman() {
@@ -53,7 +61,7 @@ public class Players {
         System.out.println("Humans location Moves is:");
         System.out.println(computer.keySet());
     }
-    public void updaterPlayer(int round,int xP,int yP,int xC,int yC){
+    public void updatePlayer(int round,int xP,int yP,int xC,int yC){
         if(round==0){
             human.put(new Point(xC, yC),'1');
             human.remove(new Point(xP, yP));
