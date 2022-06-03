@@ -4,28 +4,14 @@ import java.util.ArrayList;
 //-->c [][c]
 
 public class Moves {
-    private createBoard Board;
     char[][] board;
-
-    public createBoard getBoard() {
-        return Board;
-    }
-
-    public void setBoard(createBoard board) {
-        Board = board;
-    }
 
     public void setBoard(char[][] board) {
         this.board = board;
     }
 
-    public Moves() {
-        Board = new createBoard();
-        board = Board.getBoard();
-//        Board.displayWithoutDashAndNums();
-    }
 
-    private ArrayList<Integer> hop(int x, int y, int C_Row, int C_Colum) {
+    private ArrayList<Integer> hop(int x, int y, int C_Row, int C_Colum,char[][] board) {
         ArrayList<Integer> array = new ArrayList<Integer>();
         ArrayList<Integer> availableArray = new ArrayList<Integer>();
         ///left_hop move
@@ -33,7 +19,7 @@ public class Moves {
             if (x != C_Row || y - 4 != C_Colum) {
                 availableArray.add(x);
                 availableArray.add(y - 4);
-                array = hop(x, y - 4, x, y);
+                array = hop(x, y - 4, x, y,board);
                 for (int i = 0; i < array.size(); i++) {
                     availableArray.add(array.get(i));
                 }
@@ -44,7 +30,7 @@ public class Moves {
             if (x != C_Row || y + 4 != C_Colum) {
                 availableArray.add(x);
                 availableArray.add(y + 4);
-                array = hop(x, y + 4, x, y);
+                array = hop(x, y + 4, x, y,board);
                 for (int i = 0; i < array.size(); i++) {
                     availableArray.add(array.get(i));
                 }
@@ -55,7 +41,7 @@ public class Moves {
             if (x + 2 != C_Row || y + 2 != C_Colum) {
                 availableArray.add(x + 2);
                 availableArray.add(y + 2);
-                array = hop(x + 2, y + 2, x, y);
+                array = hop(x + 2, y + 2, x, y,board);
                 for (int i = 0; i < array.size(); i++) {
                     availableArray.add(array.get(i));
                 }
@@ -66,7 +52,7 @@ public class Moves {
             if (x + 2 != C_Row || y - 2 != C_Colum) {
                 availableArray.add(x + 2);
                 availableArray.add(y - 2);
-                array = hop(x + 2, y - 2, x, y);
+                array = hop(x + 2, y - 2, x, y,board);
                 for (int i = 0; i < array.size(); i++) {
                     availableArray.add(array.get(i));
                 }
@@ -77,7 +63,7 @@ public class Moves {
             if (x - 2 != C_Row || y + 2 != C_Colum) {
                 availableArray.add(x - 2);
                 availableArray.add(y + 2);
-                array = hop(x - 2, y + 2, x, y);
+                array = hop(x - 2, y + 2, x, y,board);
                 for (int i = 0; i < array.size(); i++) {
                     availableArray.add(array.get(i));
                 }
@@ -88,7 +74,7 @@ public class Moves {
             if (x - 2 != C_Row || y - 2 != C_Colum) {
                 availableArray.add(x - 2);
                 availableArray.add(y - 2);
-                array = hop(x - 2, y - 2, x, y);
+                array = hop(x - 2, y - 2, x, y,board);
                 for (int i = 0; i < array.size(); i++) {
                     availableArray.add(array.get(i));
                 }
@@ -97,7 +83,7 @@ public class Moves {
         return availableArray;
     }
 
-    public ArrayList<Integer> AllAvailableMoves(int MyRow, int MyColum) {
+    public ArrayList<Integer> AllAvailableMoves(int MyRow, int MyColum,char[][] board) {
         ArrayList<Integer> availableMoves = new ArrayList<Integer>();
         ArrayList<Integer> array = new ArrayList<Integer>();
         ///left move
@@ -107,7 +93,7 @@ public class Moves {
         } else if (board[MyRow][MyColum - 4] == 'O') {
             availableMoves.add(MyRow);
             availableMoves.add(MyColum - 4);
-            array = hop(MyRow, MyColum - 4, MyRow, MyColum);
+            array = hop(MyRow, MyColum - 4, MyRow, MyColum,board);
             for (int i = 0; i < array.size(); i++) {
                 availableMoves.add(array.get(i));
             }
@@ -119,7 +105,7 @@ public class Moves {
         } else if (board[MyRow][MyColum + 4] == 'O') {
             availableMoves.add(MyRow);
             availableMoves.add(MyColum + 4);
-            array = hop(MyRow, MyColum + 4, MyRow, MyColum);
+            array = hop(MyRow, MyColum + 4, MyRow, MyColum,board);
             for (int i = 0; i < array.size(); i++) {
                 availableMoves.add(array.get(i));
             }
@@ -131,7 +117,7 @@ public class Moves {
         } else if (board[MyRow + 2][MyColum + 2] == 'O') {
             availableMoves.add(MyRow + 2);
             availableMoves.add(MyColum + 2);
-            array = hop(MyRow + 2, MyColum + 2, MyRow, MyColum);
+            array = hop(MyRow + 2, MyColum + 2, MyRow, MyColum,board);
             for (int i = 0; i < array.size(); i++) {
                 availableMoves.add(array.get(i));
             }
@@ -143,7 +129,7 @@ public class Moves {
         } else if (board[MyRow + 2][MyColum - 2] == 'O') {
             availableMoves.add(MyRow + 2);
             availableMoves.add(MyColum - 2);
-            array = hop(MyRow + 2, MyColum - 2, MyRow, MyColum);
+            array = hop(MyRow + 2, MyColum - 2, MyRow, MyColum,board);
             for (int i = 0; i < array.size(); i++) {
                 availableMoves.add(array.get(i));
             }
@@ -155,7 +141,7 @@ public class Moves {
         } else if (board[MyRow - 2][MyColum + 2] == 'O') {
             availableMoves.add(MyRow - 2);
             availableMoves.add(MyColum + 2);
-            array = hop(MyRow - 2, MyColum + 2, MyRow, MyColum);
+            array = hop(MyRow - 2, MyColum + 2, MyRow, MyColum,board);
             for (int i = 0; i < array.size(); i++) {
                 availableMoves.add(array.get(i));
             }
@@ -167,7 +153,7 @@ public class Moves {
         } else if (board[MyRow - 2][MyColum - 2] == 'O') {
             availableMoves.add(MyRow - 2);
             availableMoves.add(MyColum - 2);
-            array = hop(MyRow - 2, MyColum - 2, MyRow, MyColum);
+            array = hop(MyRow - 2, MyColum - 2, MyRow, MyColum,board);
             for (int i = 0; i < array.size(); i++) {
                 availableMoves.add(array.get(i));
             }
@@ -175,15 +161,8 @@ public class Moves {
         return availableMoves;
     }
 
-    public void printBoard() {
-        Board.displayWithoutDashAndNums();
-    }
 
-    public void updateBoard(int MyRow, int MyColum, int MyNewRow, int MyNewColum) {
-        board[MyNewRow][MyNewColum] = board[MyRow][MyColum];
-        board[MyRow][MyColum] = 'O';
-    }
-    public int checkWinner() {
+    public int checkWinner(char [][]board) {
         boolean computer = false,human=false;
         int start = 9, end = 16, r = 3;
         char temp = '-';
