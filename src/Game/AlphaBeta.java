@@ -18,12 +18,11 @@ public class AlphaBeta {
             return new Point(0, 0);
         for (Map.Entry<Point, Character> entry : computer.entrySet()) {
             Point p=entry.getKey();
-            ArrayList<Integer> str = Main.myMove.AllAvailableMoves(p.getX(),p.getY());
+            ArrayList<Integer> str = Main.myMove.AllAvailableMoves(p.getX(),p.getY(),board);
             for (int j = 0; j < str.size(); j+=2) {
                 updateBoard(board,p.getX(), p.getY(), str.get(j), str.get(j++));
                 minimax(board, depth - 1,computer, isMax,best);
                 board=Main.myMove.board;
-                computer=Main.myMove.players.getComputer();
             }
         }
         return new Point(1, 2);
