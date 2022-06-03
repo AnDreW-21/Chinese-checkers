@@ -1,12 +1,36 @@
-//package Game;
-//
-//import java.util.ArrayList;
-//
-//public class AlphaBeta {
-//
-//    private static int MAX = Integer.MAX_VALUE;
-//    private static int MIN = Integer.MIN_VALUE;
-//
+package Game;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+public class AlphaBeta {
+
+    private static int MAX = Integer.MAX_VALUE;
+    private static int MIN = Integer.MIN_VALUE;
+    public static void updateBoard(char[][] board, int MyRow, int MyColum, int MyNewRow, int MyNewColum) {
+        board[MyNewRow][MyNewColum] = board[MyRow][MyColum];
+        board[MyRow][MyColum] = 'O';
+    }
+
+    public static Point minimax(char[][] board, int depth, Map<Point, Character> computer, boolean isMax, int best) {
+        if (depth == 0)
+            return new Point(0, 0);
+        for (Map.Entry<Point, Character> entry : computer.entrySet()) {
+            Point p=entry.getKey();
+            ArrayList<Integer> str = Main.myMove.AllAvailableMoves(p.getX(),p.getY());
+            for (int j = 0; j < str.size(); j+=2) {
+                updateBoard(board,p.getX(), p.getY(), str.get(j), str.get(j++));
+                minimax(board, depth - 1,computer, isMax,best);
+                board=Main.myMove.board;
+                computer=Main.myMove.players.getComputer();
+            }
+        }
+        return new Point(1, 2);
+    }
+       //    int score=evaluate(board, p, 6);
+
+
 //    public int minimax(int depth,int nodeIndex, Boolean maximizingPlayer,Point[] values, int alpha, int beta)
 //    {
 //        ArrayList<Integer> array = new ArrayList<Integer>();
@@ -58,12 +82,11 @@
 //            return best;
 //        }
 //    }
-//
-//    public int heuristic(Point point , int MyRow){
-//        int distance = MyRow - point.getX();
-//        return distance;
-//    }
-//
-//
-//
-//}
+
+    public int heuristic(Point point, int MyRow) {
+        int distance = MyRow - point.getX();
+        return distance;
+    }
+
+
+}
