@@ -3,6 +3,7 @@ package Game;
 class Main {
     static Moves myMove = new Moves();
     static createBoard Board = new createBoard();
+    static Players players=new Players();
     public static void updateBoard(char[][] board, int MyRow, int MyColum, int MyNewRow, int MyNewColum) {
         board[MyNewRow][MyNewColum] = board[MyRow][MyColum];
         board[MyRow][MyColum] = 'O';
@@ -10,7 +11,6 @@ class Main {
     public static void main(String[] args) {
         createBoard board=new createBoard();
         board.displayBoard();
-        Players players=new Players();
         players.displayHumanMoves();
 
 //        ArrayList<Integer> availableMove;

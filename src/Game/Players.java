@@ -56,7 +56,6 @@ public class Players {
         System.out.println("Humans location Moves is:");
         System.out.println(human.keySet());
     }
-
     public void displayAiComputerMoves() {
         System.out.println("Humans location Moves is:");
         System.out.println(computer.keySet());
