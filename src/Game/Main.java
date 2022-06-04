@@ -1,6 +1,7 @@
 package Game;
-
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 class Main {
     static Moves myMove = new Moves();
@@ -14,11 +15,18 @@ class Main {
     public static void main(String[] args) {
         Board.displayBoard();
         players.displayHumanMoves();
-        char [][]tempBoard=Board.getBoard();
-
-        ArrayList<Integer> is= AlphaBeta.minimax(tempBoard,3,players.getComputer(),players.getHuman(), true);
-
-
+        char [][]tempBoard=new char[17][25];
+        Board.takeACopyOfGameBoard(tempBoard);
+        Point[] computer =new Point[10];
+        Point[] human =new Point[10];
+        computer=players.switchComputer(computer);
+        human=players.switchHuman(human);
+        int [] is= AlphaBeta.minimax(tempBoard,3,computer,human, true);
+        System.out.println(is[0]);
+        System.out.println(is[1]);
+        System.out.println(is[2]);
+        System.out.println(is[3]);
+        System.out.println(is[4]);
 //        ArrayList<Integer> availableMove;
 //        int MyRow=3,MyColumn=11;
 //        availableMove = myMove.AllAvailableMoves(MyRow,MyColumn);

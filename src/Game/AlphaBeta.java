@@ -7,20 +7,17 @@ public class AlphaBeta {
 
     private static int MAX = Integer.MAX_VALUE;
     private static int MIN = Integer.MIN_VALUE;
-
     public static  char [][] updateBoard(char[][] board, int MyRow, int MyColum, int MyNewRow, int MyNewColum) {
-        System.out.println(board[MyNewRow][MyNewColum]);
         board[MyNewRow][MyNewColum] = board[MyRow][MyColum];
         board[MyRow][MyColum] = 'O';
         return board;
     }
 
-    public static void updatePlayer(Map<Point, Character> map, int xP, int yP, int xC, int yC, char round) {
-        map.put(new Point(xC, yC),round);
-        for (Map.Entry mapElement : map.entrySet()) {
-            Point p =(Point) mapElement.getKey();
-            if(p.getX() ==xP && p.getY() == yP){
-                map.remove(p);
+    public static void updatePlayer(Point[] map, int xP, int yP, int xC, int yC, char round) {
+        for (int i=0;i<10;i++) {
+            if(map[i].getX()==xP && map[i].getY()==yP){
+                map[i].setX(xC);
+                map[i].setY(yC);
                 break;
             }
         }
@@ -29,62 +26,62 @@ public class AlphaBeta {
     public static int heuristic(Point point, int MyRow) {
         return  Math.abs(point.getX()-MyRow);
     }
-
-    public static ArrayList<Integer> max(ArrayList<Integer> arrayList, ArrayList<Integer> arrayList2) {
-        if (arrayList.get(0) > arrayList2.get(0))
+    public static int [] max(int [] arrayList, int [] arrayList2) {
+        if (arrayList[0] > arrayList2[0])
             return arrayList;
         return arrayList2;
     }
 
-    public static ArrayList<Integer> min(ArrayList<Integer> arrayList, ArrayList<Integer> arrayList2) {
-        if (arrayList.get(0) < arrayList2.get(0))
+    public static int [] min(int [] arrayList, int [] arrayList2) {
+        if (arrayList[0] < arrayList2[0])
             return arrayList;
         return arrayList2;
     }
 
-    public static ArrayList<Integer> minimax(char[][] board, int depth, Map<Point, Character> computer, Map<Point, Character> human, boolean isMax) {
-        ArrayList<Integer> arr = new ArrayList<Integer>();
+    public static int [] minimax(char[][] board, int depth, Point []computer, Point [] human, boolean isMax) {
+        int [] arr = new int[5];
         if (depth == 0){
-            arr.add(-1);
+            arr[0]=-1000;
             return arr;
         }
         if (isMax) {
-            for (Map.Entry<Point, Character> entry : computer.entrySet()) {
-                Point p = entry.getKey();
+            for (int i=0;i<10;i++) {
+                Point p = computer[i];
                 ArrayList<Integer> str = Main.myMove.AllAvailableMoves(p.getX(), p.getY(), board);
-                for (int j = 0; j < str.size(); j += 2) {
-                    char [][] Newboard=updateBoard(board, p.getX(), p.getY(), str.get(j), str.get(j++));
+                int z=0;
+                for (int j = 0; j < (str.size()/2); j ++) {
                     int x = heuristic(new Point(str.get(j), str.get(j + 1)), p.getX());
-                    arr.add(x);
-                    arr.add(p.getX());
-                    arr.add(p.getY());
-                    arr.add(str.get(j));
-                    arr.add(str.get(j++));
+                    arr[0]=x;
+                    arr[1]=p.getX();
+                    arr[2]=p.getY();
+                    arr[3]=str.get(z);
+                    arr[4]=str.get(z+1);
+                    updateBoard(board, p.getX(), p.getY(), str.get(j), str.get(j++));
                     updatePlayer(computer, p.getX(), p.getY(), str.get(j), str.get(j++), '6');
-                    ArrayList<Integer> arr2 = minimax(Newboard, depth - 1, computer, human, false);
+                    int [] arr2 = minimax(board, depth - 1, computer, human, false);
                     arr = max(arr, arr2);
                     board = Main.Board.getBoard();
-                    computer = Main.players.getComputer();
+                    computer = Main.players.switchComputer(computer);
                 }
             }
             return arr;
         } else {
-            for (Map.Entry<Point, Character> entry : human.entrySet()) {
-                Point p = entry.getKey();
+            for (int i=0;i<10;i++) {
+                Point p = human[i];
                 ArrayList<Integer> strs = Main.myMove.AllAvailableMoves(p.getX(), p.getY(), board);
-                for (int j = 0; j < strs.size(); j += 2) {
+                for (int j = 0; j < (strs.size()/2); j += 2) {
                     int x = heuristic(new Point(strs.get(j), strs.get(j + 1)), p.getX());
-                    arr.add(x);
-                    arr.add(p.getX());
-                    arr.add(p.getY());
-                    arr.add(strs.get(j));
-                    arr.add(strs.get(j+1));
+                    arr[0]=x;
+                    arr[1]=p.getX();
+                    arr[2]=p.getY();
+                    arr[3]=strs.get(j);
+                    arr[4]=strs.get(j+1);
                     updateBoard(board, p.getX(), p.getY(), strs.get(j), strs.get(j+1));
                     updatePlayer(human, p.getX(), p.getY(), strs.get(j), strs.get(j+1), '1');
-                    ArrayList<Integer> arr3 = minimax(board, depth - 1, computer, human, true);
-                    arr = max(arr, arr3);
-                    board = Main.myMove.board;
-                    human = Main.players.getHuman();
+                    int []arr3 = minimax(board, depth - 1, computer, human, true);
+                    arr = min(arr, arr3);
+                    board = Main.Board.getBoard();
+                    human = Main.players.switchComputer(human);
                 }
             }
         }

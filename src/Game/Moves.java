@@ -5,12 +5,9 @@ import java.util.ArrayList;
 
 public class Moves {
     char[][] board;
-
     public void setBoard(char[][] board) {
         this.board = board;
     }
-
-
     private ArrayList<Integer> hop(int x, int y, int C_Row, int C_Colum,char[][] board) {
         ArrayList<Integer> array = new ArrayList<Integer>();
         ArrayList<Integer> availableArray = new ArrayList<Integer>();

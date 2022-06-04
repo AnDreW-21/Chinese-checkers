@@ -238,7 +238,7 @@ public class createBoard {
         }
     }
 
-    void displayWithoutDash() {
+    public void displayWithoutDash() {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
                 if (gameBoard[i][j] != '-') {
@@ -251,7 +251,7 @@ public class createBoard {
 
     }
 
-    void displayWithoutDashAndNums() {
+   public void displayWithoutDashAndNums() {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
                 if (gameBoard[i][j] == '-') {
@@ -266,6 +266,12 @@ public class createBoard {
             }
             System.out.println("");
         }
+    }
 
+    public char[][] takeACopyOfGameBoard(char [][] tempBoard) {
+        for (int i = 0; i < 17; i++) {
+            System.arraycopy(gameBoard[i], 0, tempBoard[i], 0, 25);
+        }
+        return tempBoard;
     }
 }
