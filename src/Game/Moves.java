@@ -15,7 +15,7 @@ public class Moves {
         ArrayList<Integer> array = new ArrayList<Integer>();
         ArrayList<Integer> availableArray = new ArrayList<Integer>();
         ///left_hop move
-        if((x)< 17 && (y-2)<25  && (y-4)<25) {
+        if((x)< 17 && (y-2)>=0  && (y-4)>=0) {
             if (board[x][y - 2] != 'O' && board[x][y - 4] == 'O') {
                 if (x != C_Row || y - 4 != C_Colum) {
                     availableArray.add(x);
@@ -54,7 +54,7 @@ public class Moves {
             }
         }
         ///down_left_hop move
-        if((x+1)< 17 && (y-1)<25 && (x+2)< 17 && (y-2)<25) {
+        if((x+1)< 17 && (y-1)>=0 && (x+2)< 17 && (y-2)>=0) {
             if (board[x + 1][y - 1] != 'O' && board[x + 2][y - 2] == 'O') {
                 if (x + 2 != C_Row || y - 2 != C_Colum) {
                     availableArray.add(x + 2);
@@ -67,7 +67,7 @@ public class Moves {
             }
         }
         ///up_right_hop move
-        if((x-1)< 17 && (y+1)<25 && (x-2)< 17 && (y+2)<25) {
+        if((x-1)>=0 && (y+1)<25 && (x-2)>=0 && (y+2)<25) {
             if (board[x - 1][y + 1] != 'O' && board[x - 2][y + 2] == 'O') {
                 if (x - 2 != C_Row || y + 2 != C_Colum) {
                     availableArray.add(x - 2);
@@ -80,7 +80,7 @@ public class Moves {
             }
         }
         ///up_left_hop move
-        if((x-1)< 17 && (y-1)<25 && (x-2)< 17 && (y-2)<25) {
+        if((x-1)>=0 && (y-1)>=0 && (x-2)>=0 && (y-2)>=0) {
             if (board[x - 1][y - 1] != 'O' && board[x - 2][y - 2] == 'O') {
                 if (x - 2 != C_Row || y - 2 != C_Colum) {
                     availableArray.add(x - 2);
@@ -99,11 +99,11 @@ public class Moves {
         ArrayList<Integer> availableMoves = new ArrayList<Integer>();
         ArrayList<Integer> array ;
         ///left move
-        if(MyRow< 17 && (MyColum-2)<25) {
+        if(MyRow< 17 && (MyColum-2)>=0) {
             if (board[MyRow][MyColum - 2] == 'O') {
                 availableMoves.add(MyRow);
                 availableMoves.add(MyColum - 2);
-            }else if (MyRow< 17 && (MyColum-4)<25) {
+            }else if (MyRow< 17 && (MyColum-4)>=0) {
                 if (board[MyRow][MyColum - 4] == 'O') {
                 availableMoves.add(MyRow);
                 availableMoves.add(MyColum - 4);
@@ -147,11 +147,11 @@ public class Moves {
             }
         }
         ///down left move
-        if((MyRow+1)< 17 && (MyColum-1)<25) {
+        if((MyRow+1)< 17 && (MyColum-1)>=0) {
             if (board[MyRow + 1][MyColum - 1] == 'O') {
                 availableMoves.add(MyRow + 1);
                 availableMoves.add(MyColum - 1);
-            } else if((MyRow+2)< 17 && (MyColum-2)<25){
+            } else if((MyRow+2)< 17 && (MyColum-2)>=0){
                 if (board[MyRow + 2][MyColum - 2] == 'O') {
                     availableMoves.add(MyRow + 2);
                     availableMoves.add(MyColum - 2);
@@ -163,11 +163,11 @@ public class Moves {
             }
         }
         ///up right move
-        if((MyRow-1)< 17 && (MyColum+1)<25) {
+        if((MyRow-1)>=0 && (MyColum+1)<25) {
             if (board[MyRow - 1][MyColum + 1] == 'O') {
                 availableMoves.add(MyRow - 1);
                 availableMoves.add(MyColum + 1);
-            } else if((MyRow-2)< 17 && (MyColum+2)<25){
+            } else if((MyRow-2)>=0 && (MyColum+2)<25){
                 if (board[MyRow - 2][MyColum + 2] == 'O') {
                     availableMoves.add(MyRow - 2);
                     availableMoves.add(MyColum + 2);
@@ -179,11 +179,11 @@ public class Moves {
             }
         }
         ///up left move
-        if((MyRow-1)< 17 && (MyColum-1)<25){
+        if((MyRow-1)>=0 && (MyColum-1)>=0){
         if (board[MyRow - 1][MyColum - 1] == 'O') {
             availableMoves.add(MyRow - 1);
             availableMoves.add(MyColum - 1);
-        } else if((MyRow-2)< 17 && (MyColum-2)<25) {
+        } else if((MyRow-2)>=0 && (MyColum-2)>=0) {
             if (board[MyRow - 2][MyColum - 2] == 'O') {
                 availableMoves.add(MyRow - 2);
                 availableMoves.add(MyColum - 2);
