@@ -14,7 +14,8 @@ code explanation:
         and beta and boolean which decide whether the level is maximizing or minimizing, we get all the
         available moves for the computer and calculate the distance between them and the goal(heuristic)
         to get the best move and then for the user we get the minimum to minimize his chance in winning.
-        In addition to, we check whether there is a winner or not and which one.
+        In addition to, we check whether there is a winner or not and which one, it returns 1 for the player
+        winning, 2 for the computer winning.
     Board:
         We Create (CreatBoard.java)that is used for creating the board with using 2D array.
     Point:
