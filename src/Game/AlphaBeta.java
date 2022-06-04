@@ -29,7 +29,7 @@ public class AlphaBeta {
     }
 
     public static int heuristic2(int point, int MyRow) {
-        return  Math.abs(MyRow-point);
+        return  MyRow-point;
     }
 
     public static ArrayList<Integer> max(ArrayList<Integer> arrayList, ArrayList<Integer> arrayList2) {

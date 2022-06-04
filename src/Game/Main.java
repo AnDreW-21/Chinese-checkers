@@ -31,37 +31,8 @@ class Main {
     }
 
     public static void main(String[] args) {
-        for (int i = 0; i < 12; i++) {
-            Board.displayBoard();
-            System.out.println();
-        }
-        updateBoard(Board.getBoard(), 16, 12, 0, 12);
-        updateBoard(Board.getBoard(), 15, 11, 1, 11);
-        updateBoard(Board.getBoard(), 15, 13, 1, 13);
-        updateBoard(Board.getBoard(), 14, 10, 2, 10);
-        updateBoard(Board.getBoard(), 14, 12, 2, 12);
-        updateBoard(Board.getBoard(), 14, 14, 2, 14);
-        updateBoard(Board.getBoard(), 13, 9, 3, 9);
-        updateBoard(Board.getBoard(), 13, 11, 3, 11);
-        updateBoard(Board.getBoard(), 13, 13, 3, 13);
-        updateBoard(Board.getBoard(), 13, 15, 3, 15);
-
-        Board.getBoard()[15][11] = '1';
-        Board.getBoard()[13][11] = '1';
-        Board.getBoard()[11][9] = '1';
-        Board.getBoard()[11][15] = '1';
-        Board.getBoard()[8][8] = '1';
-        Board.getBoard()[7][19] = '1';
-        Board.getBoard()[11][1] = '1';
-        Board.getBoard()[5][9] = '1';
-        Board.getBoard()[15][13] = '1';
-        Board.getBoard()[13][15] = '1';
-
-        Board.displayBoard();
-        System.out.println("The Computer is the winner");
-        System.out.println("End Game Thank you for playing");
         display();
-        Scanner sc = new Scanner(System.in);    //System.in is a standard input stream
+        Scanner sc = new Scanner(System.in);    
         int input = sc.nextInt();
         switch (input) {
             case 1:
