@@ -9,6 +9,12 @@ code explanation:
         then the marble will take this place. Else if it’s not then we check the next adjacent to know
         if the marble can hop or not. If it can hop, we get all the available hops that this marble can
         do.
+   AlphaBeta:
+        Takes the board, the depth(number of levels), the computer and the user marble positions, alpha
+        and beta and boolean which decide whether the level is maximizing or minimizing, we get all the
+        available moves for the computer and calculate the distance between them and the goal(heuristic)
+        to get the best move and then for the user we get the minimum to minimize his chance in winning.
+        In addition to, we check whether there is a winner or not and which one.
     Board:
         We Create (CreatBoard.java)that is used for creating the board with using 2D array.
     Point:
