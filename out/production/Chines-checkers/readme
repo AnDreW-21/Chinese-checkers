@@ -1,0 +1,28 @@
+Chinese Checkers (Ai-Final Project)
+Used language: Java <module type="JAVA_MODULE" version="4">
+code explanation:
+    Heuristic function:
+        Takes the new move that the marble can do and its original place,then calculate the calculate
+        the distance between them and return the distance.
+    Moves:
+        We take a marble (point x, y) and check if the adjacent place is full or empty, if it’s empty
+        then the marble will take this place. Else if it’s not then we check the next adjacent to know
+        if the marble can hop or not. If it can hop, we get all the available hops that this marble can
+        do.
+    Board:
+        We Create (CreatBoard.java)that is used for creating the board with using 2D array.
+    Point:
+        We Create class P to represent each point in(X,Y). to navigate it in the array.
+    Players:
+        we create this class to create the players and give each player his location in board.
+
+instructions to run code:
+    just click in run button to run the code. we use IntelliJ to implement this project.
+
+
+E-mails:
+Phoebe George                        Phoebegeorge137@gmail.com
+Habeba Rabie                         habebarabie874@gmail.com
+Andrew Naseif                        andrewnasief3@gmail.com
+Abdalla Mohamed Shaban               abdallamohamed56666@gmail.com
+hassnaa mounir said                  hassnaamoner79@gmail.com

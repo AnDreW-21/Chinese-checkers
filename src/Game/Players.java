@@ -52,6 +52,7 @@ public class Players {
 
     }
 
+
     public void displayHumanMoves() {
         System.out.println("Humans location Moves is:");
         System.out.println(human.keySet());
@@ -61,12 +62,25 @@ public class Players {
         System.out.println(computer.keySet());
     }
     public void updatePlayer(int round,int xP,int yP,int xC,int yC){
-        if(round==0){
-            human.put(new Point(xC, yC),'1');
-            human.remove(new Point(xP, yP));
+        if(round==6){
+            computer.put(new Point(xC, yC),(char)round);
+            for (Map.Entry mapElement : computer.entrySet()) {
+                Point p =(Point) mapElement.getKey();
+                if(p.getX() ==xP && p.getY() == yP){
+                    computer.remove(p);
+                    break;
+                }
+            }
         }else {
-            computer.put(new Point(xC, yC),'6');
-            computer.remove(new Point(xP, yP));
+            human.put(new Point(xC, yC),(char)round);
+            for (Map.Entry mapElement : human.entrySet()) {
+                Point p =(Point) mapElement.getKey();
+                if(p.getX() ==xP && p.getY() == yP){
+                    human.remove(p);
+                    break;
+                }
+            }
         }
+
     }
 }

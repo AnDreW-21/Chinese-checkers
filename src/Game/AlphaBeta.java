@@ -47,7 +47,7 @@ public class AlphaBeta {
     public static ArrayList<Integer> alphaBeta(char[][] board, int depth, HashMap<Point, Character> computer, HashMap<Point, Character> human,Boolean maximizingPlayer,
                                         int alpha, int beta , ArrayList<Integer> comeingPoint )
     {
-        if (depth == 0) {
+        if (depth == 0 ||Main.myMove.checkWinner(board)==1 ||Main.myMove.checkWinner(board)==2) {
             return comeingPoint;
             //heuristic
         }
