@@ -13,16 +13,16 @@ public class Moves {
 
     private ArrayList<Integer> hop(int x, int y, int C_Row, int C_Colum,char[][] board) {
         ArrayList<Integer> array = new ArrayList<Integer>();
-        ArrayList<Integer> availableArray = new ArrayList<Integer>();
+        ArrayList<Integer> availableArray2 = new ArrayList<Integer>();
         ///left_hop move
         if((x)< 17 && (y-2)>=0  && (y-4)>=0) {
             if (board[x][y - 2] != 'O' && board[x][y - 4] == 'O') {
                 if (x != C_Row || y - 4 != C_Colum) {
-                    availableArray.add(x);
-                    availableArray.add(y - 4);
+                    availableArray2.add(x);
+                    availableArray2.add(y - 4);
                     array = hop(x, y - 4, x, y, board);
                     for (int i = 0; i < array.size(); i++) {
-                        availableArray.add(array.get(i));
+                        availableArray2.add(array.get(i));
                     }
                 }
             }
@@ -31,11 +31,11 @@ public class Moves {
         if((x)< 17 && (y+2)<25  && (y+4)<25) {
             if (board[x][y + 2] != 'O' && board[x][y + 4] == 'O') {
                 if (x != C_Row || y + 4 != C_Colum) {
-                    availableArray.add(x);
-                    availableArray.add(y + 4);
+                    availableArray2.add(x);
+                    availableArray2.add(y + 4);
                     array = hop(x, y + 4, x, y, board);
                     for (int i = 0; i < array.size(); i++) {
-                        availableArray.add(array.get(i));
+                        availableArray2.add(array.get(i));
                     }
                 }
             }
@@ -44,11 +44,11 @@ public class Moves {
         if((x+1)< 17 && (y+1)<25 && (x+2)< 17 && (y+2)<25) {
             if (board[x + 1][y + 1] != 'O' && board[x + 2][y + 2] == 'O') {
                 if (x + 2 != C_Row || y + 2 != C_Colum) {
-                    availableArray.add(x + 2);
-                    availableArray.add(y + 2);
+                    availableArray2.add(x + 2);
+                    availableArray2.add(y + 2);
                     array = hop(x + 2, y + 2, x, y, board);
                     for (int i = 0; i < array.size(); i++) {
-                        availableArray.add(array.get(i));
+                        availableArray2.add(array.get(i));
                     }
                 }
             }
@@ -57,11 +57,11 @@ public class Moves {
         if((x+1)< 17 && (y-1)>=0 && (x+2)< 17 && (y-2)>=0) {
             if (board[x + 1][y - 1] != 'O' && board[x + 2][y - 2] == 'O') {
                 if (x + 2 != C_Row || y - 2 != C_Colum) {
-                    availableArray.add(x + 2);
-                    availableArray.add(y - 2);
+                    availableArray2.add(x + 2);
+                    availableArray2.add(y - 2);
                     array = hop(x + 2, y - 2, x, y, board);
                     for (int i = 0; i < array.size(); i++) {
-                        availableArray.add(array.get(i));
+                        availableArray2.add(array.get(i));
                     }
                 }
             }
@@ -70,11 +70,11 @@ public class Moves {
         if((x-1)>=0 && (y+1)<25 && (x-2)>=0 && (y+2)<25) {
             if (board[x - 1][y + 1] != 'O' && board[x - 2][y + 2] == 'O') {
                 if (x - 2 != C_Row || y + 2 != C_Colum) {
-                    availableArray.add(x - 2);
-                    availableArray.add(y + 2);
+                    availableArray2.add(x - 2);
+                    availableArray2.add(y + 2);
                     array = hop(x - 2, y + 2, x, y, board);
                     for (int i = 0; i < array.size(); i++) {
-                        availableArray.add(array.get(i));
+                        availableArray2.add(array.get(i));
                     }
                 }
             }
@@ -83,16 +83,16 @@ public class Moves {
         if((x-1)>=0 && (y-1)>=0 && (x-2)>=0 && (y-2)>=0) {
             if (board[x - 1][y - 1] != 'O' && board[x - 2][y - 2] == 'O') {
                 if (x - 2 != C_Row || y - 2 != C_Colum) {
-                    availableArray.add(x - 2);
-                    availableArray.add(y - 2);
+                    availableArray2.add(x - 2);
+                    availableArray2.add(y - 2);
                     array = hop(x - 2, y - 2, x, y, board);
                     for (int i = 0; i < array.size(); i++) {
-                        availableArray.add(array.get(i));
+                        availableArray2.add(array.get(i));
                     }
                 }
             }
         }
-        return availableArray;
+        return availableArray2;
     }
 
     public ArrayList<Integer> AllAvailableMoves(int MyRow, int MyColum,char[][] board) {

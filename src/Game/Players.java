@@ -7,8 +7,8 @@ import java.util.Map;
 
 public class Players {
     private int[] location;
-    private Map<Point, Character> human;
-    private Map<Point, Character> computer;
+    private HashMap<Point, Character> human;
+    private HashMap<Point, Character> computer;
     Players() {
         human = new HashMap<Point, Character>();
         computer = new HashMap<Point, Character>();
@@ -16,11 +16,11 @@ public class Players {
         setAiComputer();
     }
 
-    public Map<Point, Character> getHuman() {
+    public HashMap<Point, Character> getHuman() {
         return human;
     }
 
-    public Map<Point, Character> getComputer() {
+    public HashMap<Point, Character> getComputer() {
         return computer;
     }
 
