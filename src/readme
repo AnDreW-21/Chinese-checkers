@@ -24,7 +24,15 @@ code explanation:
         we create this class to create the players and give each player his location in board.
 
 instructions to run code:
-    just click in run button to run the code. we use IntelliJ to implement this project.
+    1- Click in run button to run the code.
+    2- You can choose which level you want to play (Easy, Medium, Hard)
+    3- You will get all the positions of your marbles (X, Y)
+    4- You can choose which marble you want to play with (X, Y)
+    5- All available moves will be displayed for this specific marble (X, Y)
+    6- You can choose one move by entering its (X, Y)
+
+    Note: we use IntelliJ to implement this project.
+
 
 
 E-mails:
